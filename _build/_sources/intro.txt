@@ -6,4 +6,4 @@
 Introduction
 ============
 
-This is a sample content
+This is a sample content updated.
