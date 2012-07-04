@@ -6,5 +6,12 @@
 Getting Started
 ===============
 
-This is an update.
-Requirements
+.. code-block:: javascript
+
+    if ("test"=="test") {
+    	return true;
+    } else {
+    	return false;
+    }
+
+This is a sample code.
