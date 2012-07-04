@@ -6,12 +6,15 @@
 Welcome to DreamFace's documentation!
 =====================================
 
+DreamFace is a Cloud Application Platform that provides developers to create
+cross-platform applications that are automatically ready to be deployed in the
+cloud.
+
 Contents:
 
 .. toctree::
    :maxdepth: 2
    
-   intro
    gettingstarted
 
 
