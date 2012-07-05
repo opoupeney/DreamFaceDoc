@@ -23,6 +23,7 @@ Architecture
 ------------
 
 DreamFace is a Cloud Application Platform. There is no need to install a specific IDE or Server,
+the only tool required is a web Browser.
 
 .. note:: DreamFace can also be installed in a private cloud for a complete security.
 	
@@ -30,4 +31,10 @@ DreamFace is a Cloud Application Platform. There is no need to install a specifi
 Anatomy of an Application
 -------------------------
 
-A DreamFace Application is composed of elements assembled in a 
+A DreamFace Application is composed of several main elements:
+
+* DataQueries: reusable elements are used to invoke web services and persist metadata
+
+* DataWidgets: reusable elements used to display the data
+
+* Screens: represent a web page or mobile screen in which are assembled DataWidgets according a specific layout.
