@@ -19,6 +19,7 @@ Contents:
    
    gettingstarted
    core_api
+   widget_com
 
 
 Indices and tables
