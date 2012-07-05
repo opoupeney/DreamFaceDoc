@@ -38,3 +38,5 @@ A DreamFace Application is composed of several main elements:
 * DataWidgets: reusable elements used to display the data
 
 * Screens: represent a web page or mobile screen in which are assembled DataWidgets according a specific layout.
+
+A DreamFace application represent a simple or complex sequence of screens.
