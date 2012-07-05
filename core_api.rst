@@ -5,6 +5,13 @@ DreamFace's Core API
 
 DreamFace extends JavaScript by providing the following pre-defined functions:
 
+``Display an Alert box``
+
+.. js:function:: dfAlert( msg )
+
+   :param string msg: The message to display.
+   :returns: void.
+   
 ``Navigate to a specific Screen``
 
 .. js:function:: dfGotoScreen( name )
@@ -26,11 +33,43 @@ DreamFace extends JavaScript by providing the following pre-defined functions:
    :param string object_name: The context object name.
    :param string property: The context property name.
    :param string value: The value to store.
-   :param function callback: the function to callback 
+   :param Function callback: the function to callback 
    :returns: void.
    
 Example:
 ::
-	dfSetContextValue( "customer", "name", "acme", function() {
-		dfAlert( "The customer name has been stored" );
+	dfSetContextValue( "customer", "company_name", "ACME", function() {
+		dfAlert( "The customer company name has been stored" );
+	});
+
+``Set multiple values into the Application Context``
+
+.. js:function:: dfSetContextValues( ctx_object, callback )
+
+   :param Object ctx_object: The context object description containing all values to be stored.
+   :param Function callback: the function to callback 
+   :returns: void.
+   
+Example:
+::
+	var ctx_object = { "context_values": [
+		{"object":"customer", "property": "company_name", "value": "ACME"},
+		{"object":"customer", "property": "company_city", "value": "New York"}
+	] };
+	dfSetContextValues( ctx_object, function() {
+		dfAlert( "The customer company name and city have been stored" );
+	});
+
+``Get a Value from the Application Context``
+
+.. js:function:: dfGetApplicationContextValue( object_name, callback )
+
+   :param string object_name: The context object name.
+   :param Function callback: the function to callback. The retrieved object is passed as parameter. 
+   :returns: void.
+
+Example:
+::
+	dfGetApplicationContextValue( object_name, function( ctx_object ) {
+		dfAlert( "The customer company name is: " + ctx_object.company_name );
 	});
