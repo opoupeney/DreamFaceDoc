@@ -18,6 +18,7 @@ Contents:
    :maxdepth: 2
    
    gettingstarted
+   core_api
 
 
 Indices and tables
