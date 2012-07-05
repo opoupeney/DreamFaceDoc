@@ -29,8 +29,8 @@ DreamFace extends JavaScript by providing the following pre-defined functions:
    :param function callback: the function to callback 
    :returns: void.
    
-Example::
-
+Example:
+::
 	dfSetContextValue( "customer", "name", "acme", function() {
-	dfAlert( "The customer name has been stored" );
+		dfAlert( "The customer name has been stored" );
 	});
