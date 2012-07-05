@@ -30,6 +30,7 @@ DreamFace extends JavaScript by providing the following pre-defined functions:
    :returns: void.
    
 Example::
+
 	dfSetContextValue( "customer", "name", "acme", function() {
-		dfAlert( "The customer name has been stored" );
+	dfAlert( "The customer name has been stored" );
 	});
