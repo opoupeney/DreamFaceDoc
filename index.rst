@@ -19,6 +19,7 @@ Contents:
    
    gettingstarted
    core_api
+   gc_api
    widget_com
 
 

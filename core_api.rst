@@ -62,16 +62,17 @@ Example:
 
 ``Get a Value from the Application Context``
 
-.. js:function:: dfGetContextValue( object_name, callback )
+.. js:function:: dfGetContextValue( object_name, property_name, callback )
 
    :param string object_name: The context object name.
-   :param Function callback: the function to callback. The retrieved object is passed as parameter. 
+   :param string property_name: The context property name.
+   :param Function callback: the function to callback. The retrieved value is passed as parameter. 
    :returns: void.
 
 Example:
 ::
-	dfGetContextValue( object_name, function( ctx_object ) {
-		dfAlert( "The customer company name is: " + ctx_object.company_name );
+	dfGetContextValue( "customer", "company_name", function( value ) {
+		dfAlert( "The customer company name is: " + property_name );
 	});
 	
 ``Get the entire Application Context``
