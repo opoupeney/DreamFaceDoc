@@ -5,9 +5,8 @@ DreamFace's Graphical Control API
 
 Graphical controls can be dynamically manipulated using an object oriented notation:
 
-``Set a CSS value``
-
 .. js:function:: css( property, value )
+``Set a CSS value``
 
    :param string property: The message to display.
    :returns: void.
@@ -15,11 +14,9 @@ Graphical controls can be dynamically manipulated using an object oriented notat
 Example:
 ::
 	element.css( "color", "#ff0000" );
-	
-
-``Invoke validation rules``
 
 .. js:function:: validate()
+``Invoke validation rules``
 
    :returns: the validation result.
     
