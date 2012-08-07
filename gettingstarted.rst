@@ -20,7 +20,7 @@ Architecture
 DreamFace is a Cloud Application Platform. There is no need to install a specific IDE or Server,
 the only tool required is a web Browser.
 
-.. note:: DreamFace can also be installed in a private cloud for a complete security.
+.. note:: DreamFace can also be installed in a private cloud.
 	
 
 Anatomy of an Application
