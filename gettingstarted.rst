@@ -26,7 +26,7 @@ the only tool required is a web Browser.
 Anatomy of an Application
 -------------------------
 
-A DreamFace Application is composed of several main elements:
+A DreamFace Application is composed of several components:
 
 * DataQueries: reusable elements are used to invoke web services and persist metadata
 * DataWidgets: reusable elements used to display the data
