@@ -18,6 +18,13 @@ Example:
 	element.css( "color", "#ff0000" );
 	
 
+Load Data
+---------
+
+.. js:function:: loadData( callback )
+
+Components: *Grid*,*ComboBox*
+
 Invoke validation rules
 -----------------------
 
