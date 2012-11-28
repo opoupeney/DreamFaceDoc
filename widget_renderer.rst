@@ -3,9 +3,13 @@
 DreamFace's Widget Rendering API
 ================================
 
-DreamFace renders widgets using the following JavaScript class
+DreamFace renders widgets programatically using a JavaScript class
+
+DataWidgetRenderer
+------------------
 
 .. js:function:: DataWidgetRenderer( widget_name )
+
    :param string widget_name: The datawidget class name.
    :returns: a new DataWidgetRenderer instance.
 
@@ -28,6 +32,6 @@ Example:
 	// Add the placeholder into the body of the DOM
 	$("body").append( placeholder );
 
-... Step 2: load the widget content
+.. Step 2: load the widget content
 
 todo
