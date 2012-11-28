@@ -8,7 +8,7 @@ DreamFace renders widgets programatically using a JavaScript class
 DataWidgetRenderer
 ------------------
 
-Constructor:
+^Constructor
 .. js:function:: DataWidgetRenderer( widget_name )
 
    :param string widget_name: The datawidget class name.
@@ -18,6 +18,7 @@ Example:
 ::
 	var cust_list = new DataWidgetRenderer( "wCustomerList" );
 
+^Process
 The DreamFace engine uses a 2 steps process to generate the datawidget.
 
 1. get a placeholder
