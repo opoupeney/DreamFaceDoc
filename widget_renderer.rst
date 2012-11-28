@@ -8,6 +8,7 @@ DreamFace renders widgets programatically using a JavaScript class
 DataWidgetRenderer
 ------------------
 
+Constructor:
 .. js:function:: DataWidgetRenderer( widget_name )
 
    :param string widget_name: The datawidget class name.
@@ -19,7 +20,7 @@ Example:
 
 The DreamFace engine uses a 2 steps process to generate the datawidget.
 
-.. Step 1: get a placeholder
+1. get a placeholder
 
 The widget content is loaded uing an asynchronous request to the DreamFace server. The content will be displayed in a specific placeholder. The first step is therefore to generate this placeholder and add it to the HTML main document (DOM).
 
@@ -32,6 +33,13 @@ Example:
 	// Add the placeholder into the body of the DOM
 	$("body").append( placeholder );
 
-.. Step 2: load the widget content
+2. load the widget content
 
-todo
+Once the placeholder is added to the DOM, the widget content can be loaded.
+
+.. js:function:: load()
+   :returns: void.
+
+Example:
+::
+	cust_list.load();
