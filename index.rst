@@ -9,7 +9,7 @@ Welcome to DreamFace's documentation!
 =====================================
 
 DreamFace is a Cloud Application Platform that provides developers to create
-cross-platform applications that are automatically ready to be deployed in the
+cross-platform applications that are automatically deployed in the
 cloud.
 
 Contents:
@@ -20,6 +20,7 @@ Contents:
    gettingstarted
    core_api
    gc_api
+   widget_renderer
    widget_com
 
 
