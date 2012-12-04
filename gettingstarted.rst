@@ -39,3 +39,27 @@ Cloud Application Platform
 
 A DreamFace Server hosts all of your applications. Each application owns its own set of screens. However, DataWidgets
 and DataQueries are reusable components and are shared accross your applications.
+
+Naming Conventions
+------------------
+
+DreamFace component names may only contain alphanumeric characters. Numbers are permitted but are discouraged in most cases, unless
+they belong to a technical term. Do not use underscores, hyphens, or any other nonalphanumeric character. Names should be in CamelCased to separate words and
+in order to differenciate components from their types the following prefixes must be used:
+
++------------------------------+-------------+
+| Main Component               | Prefix      |
++==============================+=============+
+| DataQuery                    | q           |
++------------------------------+-------------+
+| DataWidget                   | dw          |
++------------------------------+-------------+
+| Screen                       | (no prefix) |
++------------------------------+-------------+
++------------------------------------------------------+-------------+
+| Graphical Control                                    | Prefix      |
++======================================================+=============+
+| TextField, DateField, NumericField                   | fld         |
++------------------------------------------------------+-------------+
+| Button                                               | btn         |
++------------------------------------------------------+-------------+

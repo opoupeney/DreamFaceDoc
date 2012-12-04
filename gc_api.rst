@@ -1,7 +1,7 @@
 .. image:: http://www.dreamface-interactive.com/img/dreamface-interactive.png
 
-DreamFace's Graphical Control API
-=================================
+DreamFace's Graphical Controls
+==============================
 
 In order to render datawidgets, DreamFace introduces the notion of *graphical controls*. A graphical control is a reusable, configurable and programmable component used to display an information.
 Graphical Controls are grouped in several categories:
@@ -13,52 +13,49 @@ Graphical Controls are grouped in several categories:
 Basic Graphical Controls
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+* :ref:`Text <statictext>`
+* :ref:`Button <button>`
 * :ref:`TextField <textfield>`
+* :ref:`DateField <datefield>`
+* :ref:`NumberField <numberfield>`
+* :ref:`ComboBox <combobox>`
+* :ref:`TextArea <textarea>`
+
+.. _statictext:
+
+Text
+----
+A Text graphical control represent
 
 
-Set a CSS value
----------------
 
-.. js:function:: css( property, value )
+.. _button:
 
-   :param string property: The message to display.
-   :returns: void.
-    
-Example:
-::
-	element.css( "color", "#ff0000" );
-	
-
-Load Data
----------
-
-.. js:function:: loadData( callback )
-
-Components: *Grid*,*ComboBox*
+Button
+------
 
 .. _textfield:
 
 TextField
 ---------
 
-Invoke validation rules
------------------------
+.. _datefield:
 
-.. js:function:: validate()
+DateField
+---------
 
-   :returns: the validation result.
-    
-Example:
-::
-	element.validate();
+.. _numberfield:
 
-.. note:: If the graphical control is a container, the validate function will automatically trigger
-validation rules of its children controls and return a global result.
+NumberField
+-----------
 
-.. note:: To set a validation rule on a component, go to the widget builder, select the control, and click on *validation rules*
-to open the validation rules editor. Your rule must be written in javascript and must return the result. Two types of results are
-accepted:
+.. _combobox:
 
-* boolean: return **true** or **false**
-* object: return ``{ valid: false, error_msg: "you must enter a value greather than 10" }``
+ComboBox
+--------
+
+.. _textarea:
+
+TextArea
+--------
 
