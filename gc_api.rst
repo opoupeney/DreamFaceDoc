@@ -3,13 +3,17 @@
 DreamFace's Graphical Control API
 =================================
 
-In order to render datawidgets, DreamFace introduces the notion of `graphical controls`. A graphical control is a reusable, configurable and programmable component used to display an information.
-There are several categories of Graphical Controls:
+In order to render datawidgets, DreamFace introduces the notion of *graphical controls*. A graphical control is a reusable, configurable and programmable component used to display an information.
+Graphical Controls are grouped in several categories:
 
 * Basic
-* Containers
+* Layouts and Containers
 * Custom
 
+Basic Graphical Controls
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* :ref:`TextField <textfield>`
 
 
 Set a CSS value
@@ -31,6 +35,11 @@ Load Data
 .. js:function:: loadData( callback )
 
 Components: *Grid*,*ComboBox*
+
+.. _textfield:
+
+TextField
+---------
 
 Invoke validation rules
 -----------------------

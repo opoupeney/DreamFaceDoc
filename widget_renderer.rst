@@ -3,7 +3,7 @@
 DreamFace's Widget Rendering API
 ================================
 
-DreamFace renders widgets programatically using a JavaScript class
+DreamFace renders widgets programmatically using a JavaScript class
 
 DataWidgetRenderer
 ------------------
