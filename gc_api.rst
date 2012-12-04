@@ -3,7 +3,14 @@
 DreamFace's Graphical Control API
 =================================
 
-Graphical controls can be dynamically manipulated using an object oriented notation:
+In order to render datawidgets, DreamFace introduces the notion of `graphical controls`. A graphical control is a reusable, configurable and programmable component used to display an information.
+There are several categories of Graphical Controls:
+
+* Basic
+* Containers
+* Custom
+
+
 
 Set a CSS value
 ---------------

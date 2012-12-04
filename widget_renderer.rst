@@ -48,3 +48,23 @@ Once the placeholder is added to the DOM, the widget content can be loaded.
 Example:
 ::
 	cust_list.load();
+
+Passing parameters
+^^^^^^^^^^^^^^^^^^
+
+It may be useful to pass parameters between the caller and the rendered datawidget. To do so, the caller must send the parameters as a JSON object using the following function:
+
+.. js:function:: setParameters( parameters )
+
+   :param Object parameters: The JSON object representing the parameters to send.
+
+Example:
+::
+	cust_list.setParameters( { "country": "USA" } );
+
+You can get the parameters from the rendered datawidget from the following property: *dataWidget.parameters*
+
+Example:
+::
+	// Init event of the DataWidget
+	var country = dataWidget.parameters.country;
