@@ -18,6 +18,7 @@ Contents:
    :maxdepth: 2
    
    gettingstarted
+   guides
    core_api
    gc_api
    widget_renderer

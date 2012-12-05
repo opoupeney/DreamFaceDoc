@@ -44,6 +44,20 @@ A basic text object. It can be used to display any kind of information. It produ
    :param string key_style: The style key name.
    :param string value_style: The value to set.
 
+.. js:function:: setAttribute( key_attr, value_attr )
+
+   Set a specific attribute to the component. The attribute will be part of the renderer HTML element (*attribute_name="value"*).
+
+   :param string key_attr: The attribute key name.
+   :param string value_attr: The value to set.
+
+.. js:function:: getAttribute( key_attr )
+
+   Set a specific attribute associated to the component.
+
+   :param string key_attr: The attribute key name.
+   :returns: the current attribute value associated with the component.
+
 .. _button:
 
 Button
