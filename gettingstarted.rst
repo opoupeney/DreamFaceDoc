@@ -48,7 +48,7 @@ they belong to a technical term. Do not use underscores, hyphens, or any other n
 in order to differenciate components from their types the following prefixes must be used:
 
 +------------------------------+-------------+
-| Main Component               | Prefix      |
+| Main Components              | Prefix      |
 +==============================+=============+
 | DataQuery                    | q           |
 +------------------------------+-------------+
@@ -56,8 +56,9 @@ in order to differenciate components from their types the following prefixes mus
 +------------------------------+-------------+
 | Screen                       | (no prefix) |
 +------------------------------+-------------+
+
 +------------------------------------------------------+-------------+
-| Graphical Control                                    | Prefix      |
+| Graphical Controls                                   | Prefix      |
 +======================================================+=============+
 | TextField, DateField, NumericField                   | fld         |
 +------------------------------------------------------+-------------+
