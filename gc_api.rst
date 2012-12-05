@@ -25,9 +25,24 @@ Basic Graphical Controls
 
 Text
 ----
-A Text graphical control represent
+A basic text object. It can be used to display any kind of information. It produces a standard <div> HTML element. 
 
+.. js:function:: setValue( value )
+	
+   Set and display the value passed as parameter in the text component.
 
+   :param string value: the value to display.
+
+.. js:function:: getValue()
+
+   :returns: the current value associated with the component.
+   
+.. js:function:: css( key_style, value_style )
+
+   Set a specific CSS style to the component.
+
+   :param string key_style: The style key name.
+   :param string value_style: The value to set.
 
 .. _button:
 
