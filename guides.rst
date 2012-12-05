@@ -1,4 +1,4 @@
-.. image:: /images/dreamface-interactive.png
+.. image:: /images/df_logo.png
 
 Guides
 ======
