@@ -47,17 +47,17 @@ DreamFace component names may only contain alphanumeric characters. Numbers are 
 they belong to a technical term. Do not use underscores, hyphens, or any other nonalphanumeric character. Names should be in CamelCased to separate words and
 in order to differenciate components from their types the following prefixes must be used:
 
-+------------------------------------------------------+-------------+
-| Main Components                                      | Prefix      |
-+======================================================+=============+
-| DataQuery                                            | q           |
-+------------------------------------------------------+-------------+
-| DataWidget                                           | dw          |
-+------------------------------------------------------+-------------+
-| Screen                                               | (no prefix) |
-+------------------------------------------------------+-------------+
-| Application                                          | (no prefix) |
-+------------------------------------------------------+-------------+
++------------------------------------------------------+-----------------+
+| Main Components                                      | Prefix          |
++======================================================+=================+
+| DataQuery                                            | q               |
++------------------------------------------------------+-----------------+
+| DataWidget                                           | dw              |
++------------------------------------------------------+-----------------+
+| Screen                                               | (no prefix)     |
++------------------------------------------------------+-----------------+
+| Application                                          | (no prefix)     |
++------------------------------------------------------+-----------------+
 
 +------------------------------------------------------+-------------+
 | Graphical Controls                                   | Prefix      |
