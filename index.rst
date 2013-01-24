@@ -23,6 +23,7 @@ Contents:
    gc_api
    widget_renderer
    widget_com
+   grid
 
 
 Indices and tables

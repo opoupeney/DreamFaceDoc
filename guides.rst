@@ -6,7 +6,31 @@ Guides
 DreamFace provides several guides to give developers best practices in implementing sophisticated and powerful
 features required when developing an Enterprise Cloud application:
 
+* :ref:`Start DreamFace Studio <startstudio>`
+* :ref:`Create an application <createapplication>`
+* :ref:`Create a DataWidget <createdw>`
 * :ref:`Form Validation <formvalidation>`
+
+.. _startstudio:
+
+Start DreamFace Studio
+----------------------
+
+TBD.
+
+.. _createapplication:
+
+Create an Application
+----------------------
+
+TBD.
+
+.. _createdw:
+
+Create a DataWidget
+-------------------
+
+TBD.
 
 .. _formvalidation:
 
