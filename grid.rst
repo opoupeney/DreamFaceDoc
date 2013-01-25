@@ -14,6 +14,7 @@ Grid is the one of the moset complex graphical components in the DreamFace's too
 * :ref:`Paging and Passing Parameters to DataQuery<pagingAndPassingParams>`
 * :ref:`Refreshing the Dynamic Chart depending on the Grid Column <dynChartsLinkedToGrid>`
 * :ref:`Putting the Dynamic Charts in the Grid Column <dynChartsInGrid>`
+* :ref:`Grid Sizing Relatively to the Wrapping Container <gridSizing>`
 
 .. _basicUsage:
 
@@ -25,20 +26,116 @@ Basic Usage
 Columns Summary
 ------
 
+To show the summary of the grid column, developer has to open the **values** attribute and put the value of the **Show Summary** parameter to **yes**. This will add one more parameter to the **Columns Definition** section named **Summary Type**. It can have several values:
+
+* none - this column will not be summarized.
+* count - row numbers will be shown.
+* min - minimum value will be shown.
+* max - maximum value will be shown.
+* average - average value will be shown.
+
+**Important:** be carefull with the column type, e.g. if the column type is **Numeric**, it makes perfect sense to summarize it with type **average**, but if the column type is **String** - summarizing by average will give the senseless result.
+
+Another important attribute appearing if the gird columns can be summarized is **Summary Renderer** - it appears near the **Summary Type** parameter in the **Columns Definition** section:
+
+.. js:function:: renderer(value, summaryData, dataIndex)
+	
+   Summary renderer function.
+
+   :param numeric value: Summary value.
+
+   :param object summaryData: Object containing the columns internal indexes and summary values.
+
+   :param string dataIndex: The column name.
+
+Example: grid with column *Age* summarized by average.
+
+.. image:: images/grid_summary.png
+
+The **Summary renderer** of the *Age* column contains the code to highlight the summary value by different colors according to the condition:
+::
+	if (value < 30)
+	   return "<font color='red'>" + value + "</font>";
+	else
+	   return "<font color='blue'>" + value + "</font>";
+
+**Note** also, that summary functionality can be used with groupped rows as well as with the whole grid.
+
 .. _groupingRows:
 
 Grouping Rows
 ---------
+
+Grouping rows means that the data in the grid will be grouped by one of the columns.
+
+To make the grid groupable, developer has to open the **values** attribute, open the **Columns Definition** section and put **Groupable** of any selected column to **yes**. The special icon will appear near the column name noting that this column is groupable.
+
+Note, that only one column at a time can be groupable.
+
+If the column is groupable, two new attributes appear: **Collapsed** - means that the rows will be initially collapsed and **Hide Column** - means that this column will be initially hidden.
+
+Example: the grid with two editable and one not editable columns.
+
+.. image:: images/grid_grouping.png
+
+Note also, if the grid is groupable, there will be two new items in the grid columns runtime menu:
+
+* Group by this field - to change the groupable column in runtime.
+* Show in groups - to make/cancel the grid groupable.
+
+.. image:: images/grid_grouping_menu.png
 
 .. _lockingColumns:
 
 Locking Columns
 ---------
 
+Locking column means that if the grid has a horizontal scrollbar, it will be applied to all the columns except the locked one.
+
+Example: the grid with the locked column *Account*.
+
+.. image:: images/grid_locking.png
+
+To lock the column, developer has to open the **values** attribute, go to the **Columns Definition** section and put the **Frozen** parameter value to **yes**.
+
 .. _editingRows:
 
 Editing Rows
 -----------
+
+To edit the selected Grid row, user has to open the Grid **values** attribute and put the **Grid is Editable** parameter to **yes**. It will automatically add an attribute **Editable** to every column in the **Columns definition** section. This attribute must be set to **yes** for the columns that can be edited by the user during the runtime.
+
+Note, that columns will be edited according to their type, e.g. if the type is *Date*, the column will have a calendar editor.
+
+To open the row editor, user has to double click on the selected row. Also, two buttons appear to update the values and cancel the editing.
+
+If any cell value is changed, the selected row will be marked by the red color at the top left corner of the row.
+
+Example: the grid with two editable and one not editable columns.
+
+.. image:: images/grid_row_editing.png
+
+Validate Editing Values
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To validate the edited values, developer should use the **validateedit** Grid System Event:
+
+.. js:function:: validateedit(dataWidget, params, element)
+	
+   Validates editable value. Triggered just after user clicked the *Update* button and before closing the editor.
+
+   :param object dataWidget: The datawidget instance.
+
+   :param object params: Parameters. The object has several properties: **grid** (*object*) - the grid instance, **record** (*object*) - current row instance, **index** (*number*) - row index in the grid, **e** (*object*) - event object instance.
+
+   :param object element: DFExtComponent instance.
+
+Example: this code forbids to type "Smith" as a value for the *Last Name* column. If the value equals "Smith", the editor will not be closed.
+::
+	if (params.e.newValues.lastName == "Smith")
+	    params.e.cancel = true;
+	else
+	    params.e.cancel = false;
 
 .. _liveSearch:
 
@@ -121,3 +218,20 @@ Refreshing the Dynamic Chart depending on the Grid Column
 
 Putting the Dynamic Charts in the Grid Column
 --------
+
+.. _gridSizing:
+
+Grid Sizing Relatively to the Wrapping Container
+------------------------------------------------
+
+Sometimes the Grid has the size which is bigger than its wrapping contaner. In such cases, grid can be configured to have the appropriate scrollbars appearing automatically.
+
+Example: two grids, within the **FieldSet** and **Panel** layout components.
+
+.. image:: images/grid_relative_size.png
+
+As you can see, if Style parameters **width** and **height** of the Grid are bigger than such parameters of the wrapping container, the scrollbars automatically appear.
+
+**Important:** to make it working, the internal Grid component must have its Style parameter **position** to be **relative**.
+
+**Note:** this functionality works with **FieldSet** and **Panel** layout components.
