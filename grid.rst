@@ -12,7 +12,6 @@ Grid is the one of the most complex graphical components in the DreamFace's tool
 * :ref:`Editing Rows <editingRows>`
 * :ref:`Live Search <liveSearch>`
 * :ref:`Paging and Passing Parameters to DataQuery<pagingAndPassingParams>`
-* :ref:`Refreshing the Chart depending on the Grid Column <dynChartsLinkedToGrid>`
 * :ref:`Putting the Charts in the Grid Column <dynChartsInGrid>`
 * :ref:`Grid Sizing Relatively to the Wrapping Container <gridSizing>`
 
@@ -20,6 +19,43 @@ Grid is the one of the most complex graphical components in the DreamFace's tool
 
 Basic Usage
 ----
+
+To create the simplest grid, developer has to drag and drop the *Grid component* from the *Basic Elements* panel to the widget content and configure the **values** attribute. The minimal configuration for every grid has to define the **DataQuery**, **Data path** and several columns in the **Columns definition** section. Most of the column parameters can have its default values except the *Label*, *Value* and *Type* fields. Example of the simple grid configuration: 
+
+.. image:: images/grid_values.png
+
+**Important:** do not forget to click *Apply* and *Close* in the *Columns Definition* section.
+
+Result:
+
+.. image:: images/grid_simple.png
+
+Columns Renderer
+^^^^^^^^^^^^^^^^
+
+To change the default column rendering, developer has to use the **Renderer** parameter in the *Columns Definition* section:
+
+.. js:function:: renderer(value, metadata, record, rowIndex, colIndex, store, view)
+	
+   Renderer function.
+
+   :param object value: Column value.
+
+   :param object metadata: Object containing the column metadata information.
+
+   :param object record: Record object for the current row.
+
+   :param numeric rowIndex: The current row index staring from zero.
+
+   :param numeric colIndex: The current column index staring from zero.
+
+   :param object store: DataStore object.
+
+   :param object view: Grid View object.
+
+Example: the renderer code to show the column value using the bold font weight.
+::
+	return "<b>" + value + "</b>";
 
 .. _columnsSummary:
 
@@ -295,15 +331,54 @@ Example: code in the **change** system event of the Combobox component containin
 	accountsGrid.loadData({customerId: customerId},
 				{pageSize: 50, firstRowParamName: "returnRecordFromIndex", lastRowParamName: "returnRecordToIndex", totalRowsParamName: "totalNoOfRecordFound"});
 
-.. _dynChartsLinkedToGrid:
-
-Refreshing the Chart depending on the Grid Column
---------
-
 .. _dynChartsInGrid:
 
 Putting the Charts in the Grid Column
 --------
+ 
+To put the Chart in the Grid column, developer has to use the column **Renderer** function in the **Columns Definition** section, for example:
+::
+	var wgt = new DataWidgetRenderer("wUsGraphColumn");
+	wgt.setParameters({"index":value,"height":120});
+	var html = wgt.getPlaceholder();
+	view.initialConfig.grid.dataWidgetRenderers.push(wgt);
+	return html;
+
+Code line by line explanation:
+
+* First of all, **DataWidgetRenderer** object has to be created. Its parameter must contain the name of the previously defined widget showing the chart: in the example, it's *wUsGraphColumn*.
+* After that, the parameters must be passed: in the example, it's the grid column name/value and *wUsGraphColumn* widget height.
+* Method **getPlaceholder** must be called to produce the HTML content.
+* Prepared **DataWidgetRenderer** object must be put into the **dataWidgetRenderers** array property of the **Grid View** object, which instance is passed as the column renderer function parameter.
+
+Previously defined widget (*wUsGraphColumn* in the example) containig the chart, must have the following code in the widget **display** system event:
+::
+	if (dataWidget.parameters != null){
+	    var chart = dataWidget.getElementByName("chart_column");
+	    var index = dataWidget.parameters.index;
+	    if(index == "S & P 500"){
+	        index = "SP500";
+	    }else if(index == "DJIA"){
+	        index = "DJAI";
+	    }
+	    chart.css("visibility","hidden"); 
+	    setTimeout(function(){
+	        chart.loadData({market: index});
+	        chart.css("visibility","visible");
+	    },2000);
+	}
+
+Code explanation:
+
+* This code checks if any parameters were passed by the **DataWidgetRenderer**.
+* Finds the chart component using its name: *chart_column*.
+* Prepares the parameter value that will be passed to the chart to load its data programmatically: *market* parameter name, that was configured in the DataQuery used by this chart.
+* Change the visibility to hidden.
+* Sets timeout, loads the data programmatically in the chart and change the visibility to visible. Timeout is necessary to let the DataQuery used by the Grid to load its data first (before loading the chart data).
+
+Possible result:
+
+.. image:: images/grid_dyn_chart.png
 
 .. _gridSizing:
 
