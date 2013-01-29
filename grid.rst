@@ -7,6 +7,7 @@ Grid is the one of the most complex graphical components in the DreamFace's tool
 
 * :ref:`Basic Usage <basicUsage>`
 * :ref:`Columns Summary <columnsSummary>`
+* :ref:`Grid Events <gridEvents>`
 * :ref:`Grouping Rows <groupingRows>`
 * :ref:`Locking Columns <lockingColumns>`
 * :ref:`Editing Rows <editingRows>`
@@ -55,7 +56,15 @@ To change the default column rendering, developer has to use the **Renderer** pa
 
 Example: the renderer code to show the column value using the bold font weight.
 ::
-	return "<b>" + value + "</b>";
+	if (record.data.department == "Management")
+	   return "<b>" + value + "</b>";
+	else
+	   return value;
+
+This code is placed in the renderer of the column *Last Name* and does two things:
+
+* Takes the value of another column - *Department*.
+* Highlights the current column (*Last Name*) value as bold if the current employee (that means, current row) is from Management department.
 
 .. _columnsSummary:
 
@@ -96,6 +105,63 @@ The **Summary renderer** of the *Age* column contains the code to highlight the 
 	   return "<font color='blue'>" + value + "</font>";
 
 **Note** also, that summary functionality can be used with groupped rows as well as with the whole grid.
+
+.. _gridEvents:
+
+Grid Events
+---------
+
+Grid component has several dedicated system events: **itemclick**, **itemdblclick**, **dataLoaded**, **validateedit** and **edit**. All these events have three arguments *(dataWidget, params, element)*. The *dataWidget* and *element* are the same for all events, but *params* is different.
+
+.. js:function:: itemclick(dataWidget, params, element)
+	
+   Triggered when developer clicks on the grid.
+
+   :param object dataWidget: The datawidget instance.
+
+   :param object params: Parameters. The object has several properties: **grid** (*object*) - the grid instance, **record** (*object*) - current row instance, **item** (*object*) - grid item element, **index** (*number*) - row index in the grid.
+
+   :param object element: DFExtComponent instance.
+
+.. js:function:: itemdblclick(dataWidget, params, element)
+	
+   Triggered when developer double clicks on the grid.
+
+   :param object dataWidget: The datawidget instance.
+
+   :param object params: Parameters. The object has several properties: **grid** (*object*) - the grid instance, **record** (*object*) - current row instance, **item** (*object*) - grid item element, **index** (*number*) - row index in the grid.
+
+   :param object element: DFExtComponent instance.
+
+.. js:function:: dataLoaded(dataWidget, params, element)
+	
+   Triggered when the data is loaded.
+
+   :param object dataWidget: The datawidget instance.
+
+   :param object params: Parameters. The object has only one property: **DataSet** object.
+
+   :param object element: DFExtComponent instance.
+
+.. js:function:: validateedit(dataWidget, params, element)
+
+   Validates editable value. Triggered just after user clicked the *Update* button and *before* closing the editor. Return *false* from event handler to cancel the change. See the :ref:`Validate Editing Values <validateEditAPI>` section.
+
+.. js:function:: edit(dataWidget, params, element)
+	
+   Triggered *after* editing.
+
+   :param object dataWidget: The datawidget instance.
+
+   :param object params: Parameters. The object has several properties: **grid** (*object*) - the grid instance, **record** (*object*) - current row instance, **index** (*number*) - row index in the grid, **e** (*object*) - event object instance.
+
+   :param object element: DFExtComponent instance.
+
+The most useful property of the **params** argument of all the events is the **record**. It has a subproperty called **data** containing the current raw values. For our example, developer can access all the raw values and print it to the browser console like that (in any grid event) - **params.record.data.columnName**, where **columnName** is the name of the column:
+::
+	console.log("Last Name: " + params.record.data.lastName + 
+           ", age: " + params.record.data.age + 
+           ", department: " + params.record.data.department);
 
 .. _groupingRows:
 
@@ -151,6 +217,8 @@ Example: the grid with two editable and one not editable columns.
 
 .. image:: images/grid_row_editing.png
 
+.. _validateEditAPI:
+
 Validate Editing Values
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -158,7 +226,7 @@ To validate the edited values, developer should use the **validateedit** Grid Sy
 
 .. js:function:: validateedit(dataWidget, params, element)
 	
-   Validates editable value. Triggered just after user clicked the *Update* button and before closing the editor.
+   Validates editable value. Triggered just after user clicked the *Update* button and before closing the editor. Return *false* from event handler to cancel the change.
 
    :param object dataWidget: The datawidget instance.
 
