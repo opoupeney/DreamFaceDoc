@@ -170,7 +170,7 @@ There are several methods common for all basic graphical components:
 Validation Rules
 --------
 
-To validate the form, developer has to define the **Validation Rules** for every form field in the component attributes section. After that, he needs to call somewhere **dataWidget.validate()** method (see the Form Validation Guide for details).
+To validate the form, developer has to define the **Validation Rules** for every form field in the component attributes section. After that, he needs to call somewhere **dataWidget.validate()** method (see the `Form Validation Guide <guides.html#form-validation>`_ for details).
 
 Example: form containing two fields with defined validation rules and a button to validate the entire form.
 
@@ -212,4 +212,4 @@ Layouts and Containers
 FieldSet
 ----
 
-This is the container for the form fields elements.
+This is the container for the form fields elements. See the :ref:`Validation Rules <validRules>` for an example.
