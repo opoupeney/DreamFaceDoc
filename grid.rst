@@ -241,6 +241,8 @@ Example: this code forbids to type "Smith" as a value for the *Last Name* column
 	else
 	    params.e.cancel = false;
 
+**Important:** do not forget to return *false* from the event handler if you want to cancel the change.
+
 .. _liveSearch:
 
 Live Search
