@@ -28,7 +28,19 @@ Basic Graphical Controls
 
 Text
 ----
-A basic text object. It can be used to display any kind of information. It produces a standard <div> HTML element. 
+A basic text object. It can be used to display any kind of information. It produces a standard <div> HTML element. This component has its own API method that is different from other components :ref:`General API <generalBasicGcApi>`:
+
+.. js:function:: css( key_style, value_style )
+
+   Set a specific CSS style to the component.
+
+   :param string key_style: The style key name.
+   :param string value_style: The value to set.
+
+Example: this code changes the current text style for *italic* and grey. *element* is a current component instance passed as an agrument to the system events.
+::
+	element.css("font-style", "italic");
+	element.css("color", "#B0C4DE");
 
 .. _button:
 
@@ -131,7 +143,7 @@ This component is used to type the large text information within the form.
 .. _generalBasicGcApi:
 
 General API
-----
+-----------
 There are several methods common for all basic graphical components:
 
 .. js:function:: setValue( value )
@@ -143,13 +155,6 @@ There are several methods common for all basic graphical components:
 .. js:function:: getValue()
 
    :returns: the current value associated with the component.
-   
-.. js:function:: css( key_style, value_style )
-
-   Set a specific CSS style to the component.
-
-   :param string key_style: The style key name.
-   :param string value_style: The value to set.
 
 .. js:function:: setAttribute( key_attr, value_attr )
 
@@ -168,7 +173,7 @@ There are several methods common for all basic graphical components:
 .. _validRules:
 
 Validation Rules
---------
+----------------
 
 To validate the form, developer has to define the **Validation Rules** for every form field in the component attributes section. After that, he needs to call somewhere **dataWidget.validate()** method (see the `Form Validation Guide <guides.html#form-validation>`_ for details).
 
@@ -203,13 +208,13 @@ As a result, if the user clicks on the *Submit* button when *Name* field is empt
 .. image:: images/valid_error.png
 
 Layouts and Containers
-^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 * :ref:`FieldSet <fieldset>`
 
 .. _fieldset:
 
 FieldSet
-----
+--------
 
 This is the container for the form fields elements. See the :ref:`Validation Rules <validRules>` for an example.
