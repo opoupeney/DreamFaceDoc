@@ -11,6 +11,7 @@ features required when developing an Enterprise Cloud application:
 * :ref:`Create a DataWidget <createdw>`
 * :ref:`Form Validation <formvalidation>`
 * :ref:`Form Validation Rules <validRules>`
+* :ref:`Using Expressions <expressions>`
 
 .. _startstudio:
 
@@ -101,3 +102,14 @@ And the code of the **click** system event of the *Submit* button will be:
 As a result, if the user clicks on the *Submit* button when *Name* field is empty, this field will be highlighted by the red border:
 
 .. image:: images/valid_error.png
+
+.. _expressions:
+
+Using Expressions
+----------------
+
+Expressions are very very powerfull part of the DreamFace platform. Using expressions lets the components to change its behavior in runtime depending on many other conditions. To use expressions, select the graphical component and click on the expressions icon near the component attribute that must change its behavior in runtime. It opens an Expression Builder in the popup window. Select the global element in the bottom left area and its property in the bottom right area - it will paste an appropriate expression to the javascript editor.
+
+Example: this code, placed in the expressions of the *Disabled* attribute of the Submit button, enables the button only if the widget validation status is *validated*:
+::
+	return (("{widget.Properties.validationStatus}"=="validated")? "no" : "yes");
