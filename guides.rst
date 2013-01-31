@@ -10,6 +10,7 @@ features required when developing an Enterprise Cloud application:
 * :ref:`Create an application <createapplication>`
 * :ref:`Create a DataWidget <createdw>`
 * :ref:`Form Validation <formvalidation>`
+* :ref:`Form Validation Rules <validRules>`
 
 .. _startstudio:
 
@@ -63,3 +64,40 @@ Example:
 	if (dataWidget.getValidationStatus()=="validated") {
 		alert( "all fields have been validated" );
 	};
+
+.. _validRules:
+
+Form Validation Rules
+----------------
+
+To validate the form, developer has to define the **Validation Rules** for every form field in the component attributes section. After that, he needs to call somewhere **dataWidget.validate()** method (see the :ref:`Form Validation Guide <formvalidation>` for details).
+
+Example: form containing two fields with defined validation rules and a button to validate the entire form.
+
+.. image:: images/valid_form.png
+
+Definition of the the validation rules is doing in the popup window. To get the code returning the current element value in runtime, click on *this* element in the bottom left area, then click on *Properties* in the bottom right area and double click on *value*:
+
+.. image:: images/valid_rules.png
+
+After that, code the application logic. The code of the *Name* field validation rules will be:
+::
+	if ("{this.Properties.value}" == '')
+	    return false;
+	else
+	    return true;
+
+The code of the *Age* field validation rules will be:
+::
+	if ("{this.Properties.value}" < 0)
+	    return false;
+	else
+	    return true;
+
+And the code of the **click** system event of the *Submit* button will be:
+::
+	dataWidget.validate();
+
+As a result, if the user clicks on the *Submit* button when *Name* field is empty, this field will be highlighted by the red border:
+
+.. image:: images/valid_error.png

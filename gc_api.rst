@@ -6,9 +6,11 @@ DreamFace's Graphical Controls
 In order to render datawidgets, DreamFace introduces the notion of *graphical controls*. A graphical control is a reusable, configurable and programmable component used to display an information.
 Graphical Controls are grouped in several categories:
 
-* Basic
-* Layouts and Containers
-* Custom
+* :ref:`Basic <basicComps>`
+* :ref:`Layouts and Containers <layoutsComps>`
+* :ref:`Custom <customComps>`
+
+.. _basicComps:
 
 Basic Graphical Controls
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -22,7 +24,6 @@ Basic Graphical Controls
 * :ref:`CheckBox <checkbox>`
 * :ref:`TextArea <textarea>`
 * :ref:`General API <generalBasicGcApi>`
-* :ref:`Validation Rules <validRules>`
 
 .. _statictext:
 
@@ -36,6 +37,20 @@ A basic text object. It can be used to display any kind of information. It produ
 
    :param string key_style: The style key name.
    :param string value_style: The value to set.
+
+.. js:function:: setAttribute( key_attr, value_attr )
+
+   Set a specific attribute to the component. The attribute will be part of the renderer HTML element (*attribute_name="value"*).
+
+   :param string key_attr: The attribute key name.
+   :param string value_attr: The value to set.
+
+.. js:function:: getAttribute( key_attr )
+
+   Set a specific attribute associated to the component.
+
+   :param string key_attr: The attribute key name.
+   :returns: the current attribute value associated with the component.
 
 Example: this code changes the current text style for *italic* and grey. *element* is a current component instance passed as an agrument to the system events.
 ::
@@ -147,7 +162,7 @@ General API
 There are several methods common for all basic graphical components:
 
 .. js:function:: setValue( value )
-	
+   
    Set and display the value passed as parameter in the text component.
 
    :param string value: the value to display.
@@ -156,65 +171,81 @@ There are several methods common for all basic graphical components:
 
    :returns: the current value associated with the component.
 
-.. js:function:: setAttribute( key_attr, value_attr )
-
-   Set a specific attribute to the component. The attribute will be part of the renderer HTML element (*attribute_name="value"*).
-
-   :param string key_attr: The attribute key name.
-   :param string value_attr: The value to set.
-
-.. js:function:: getAttribute( key_attr )
-
-   Set a specific attribute associated to the component.
-
-   :param string key_attr: The attribute key name.
-   :returns: the current attribute value associated with the component.
-
-.. _validRules:
-
-Validation Rules
-----------------
-
-To validate the form, developer has to define the **Validation Rules** for every form field in the component attributes section. After that, he needs to call somewhere **dataWidget.validate()** method (see the `Form Validation Guide <guides.html#form-validation>`_ for details).
-
-Example: form containing two fields with defined validation rules and a button to validate the entire form.
-
-.. image:: images/valid_form.png
-
-Definition of the the validation rules is doing in the popup window. To get the code returning the current element value in runtime, click on *this* element in the bottom left area, then click on *Properties* in the bottom right area and double click on *value*:
-
-.. image:: images/valid_rules.png
-
-After that, code the application logic. The code of the *Name* field validation rules will be:
+Example: this code changes the Text component value if Checkbox component was checked.
 ::
-	if ("{this.Properties.value}" == '')
-	    return false;
-	else
-	    return true;
+   var myCheckbox = dataWidget.getElementByName('MY_CHECKBOX');
+   var myText = dataWidget.getElementByName('MY_TEXT');
 
-The code of the *Age* field validation rules will be:
-::
-	if ("{this.Properties.value}" < 0)
-	    return false;
-	else
-	    return true;
+   if (myCheckbox.getValue() == "on")
+      myText.setValue("bla bla");
 
-And the code of the **click** system event of the *Submit* button will be:
-::
-	dataWidget.validate();
-
-As a result, if the user clicks on the *Submit* button when *Name* field is empty, this field will be highlighted by the red border:
-
-.. image:: images/valid_error.png
+.. _layoutsComps:
 
 Layouts and Containers
 ^^^^^^^^^^^^^^^^^^^^^^
 
 * :ref:`FieldSet <fieldset>`
+* :ref:`Panel <panel>`
+* :ref:`Vertical Panel <vertpanel>`
+* :ref:`Tab Panel <tabpanel>`
+* :ref:`PanelSplitter <panelsplitter>`
 
 .. _fieldset:
 
 FieldSet
 --------
 
-This is the container for the form fields elements. See the :ref:`Validation Rules <validRules>` for an example.
+This is the container usually used to contain the form fields elements.
+
+.. image:: images/valid_form.png
+
+.. _panel:
+
+Panel
+--------
+
+This is the simplest container used to group any graphical components including other panels.
+
+.. image:: images/panel.png
+
+.. _vertpanel:
+
+Vertical Panel
+--------
+
+This is the same as a simple panel but using the vertical layout.
+
+.. _tabpanel:
+
+Tab Panel
+--------
+
+This is the classical tab panel used to group the information in the different tabs:
+
+.. image:: images/tabpanel.png
+
+.. _panelsplitter:
+
+PanelSplitter
+--------
+
+This is the container used to split several panels horizontally or vertically.
+
+Example: horizontal layout, one panel with a title, another one iwhtout title.
+
+.. image:: images/horizontal_splitter.png
+
+Example: vertical layout.
+
+.. image:: images/vertical_splitter.png
+
+.. _customComps:
+
+Custom
+^^^^^^
+
+Any combination of graphical controls can be saved for the future usage as a Custom Graphical Control. To do it, select the component and click the "Save as Custom Control" button at the top right corner of the Widget Builder design area. It opens a popup window:
+
+.. image:: images/custom_comp.png
+
+After clicking *Save*, this component will appear in the Widget Builder *Custom Elements* panel. This component can be used in the future development just like any basic component, with its attributes, styles etc.
