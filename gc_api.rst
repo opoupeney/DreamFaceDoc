@@ -70,7 +70,7 @@ This component has its own API methods that are different from other components 
    :returns: the current attribute value associated with the component.
 
 Example: this code changes the current text style for *italic* and grey. *element* is a current component instance passed as an agrument to the system events.
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
 	element.css("font-style", "italic");
 	element.css("color", "#B0C4DE");
 
@@ -100,7 +100,7 @@ Visible           Component visibility                                 yes, no  
 ================  ===================================================  ========================  ==========
 
 Example: this code in the button **click** system event makes the form validation.
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
 	dataWidget.validate();
 
 .. _textfield:
@@ -277,12 +277,12 @@ How to use **element.setValue()** method with checkbox:
    * Any value passed by **element.setValue()** method will uncheck the component state except *true* and the current value of the **Checked Value** attribute.
 
 Example: to check the component state (*MY_CHECKBOX* is the checkbox name).
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
 	var my_checkbox = dataWidget.getElementByName('MY_CHECKBOX');
 	my_checkbox.setValue(true);
 
 Example: to uncheck the component state (*MY_CHECKBOX* is the checkbox name).
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
 	var my_checkbox = dataWidget.getElementByName('MY_CHECKBOX');
 	my_checkbox.setValue(false);
 
@@ -418,7 +418,7 @@ There are several methods common for all basic graphical components:
    :returns: the current value associated with the component.
 
 Example: this code changes the Text component value if Checkbox component was checked.
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
    var myCheckbox = dataWidget.getElementByName('MY_CHECKBOX');
    var myText = dataWidget.getElementByName('MY_TEXT');
 
