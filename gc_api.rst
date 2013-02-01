@@ -29,7 +29,19 @@ Basic Graphical Controls
 
 Text
 ----
-A basic text object. It can be used to display any kind of information. It produces a standard <div> HTML element. This component has its own API method that is different from other components :ref:`General API <generalBasicGcApi>`:
+A basic text object. It can be used to display any kind of information. It produces a standard <div> HTML element.
+
+Component attributes: 
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Text              Plain text to display within the component           Plain text                yes
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
+
+This component has its own API methods that are different from other components :ref:`General API <generalBasicGcApi>`:
 
 .. js:function:: css( key_style, value_style )
 
@@ -66,6 +78,22 @@ Simple button component for the user's actions, like click, doubleclick etc. Als
 
 .. image:: images/button.png
 
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Text              Plain text or html to display within the component   Plain text or html        yes
+Tooltip           Component tooltip                                    Any string                yes
+Menu definition   Button can have a drop-down menu defined             Menu definition name      no
+                  by this attribute
+Tab Index         Controls the order of tabing (pressing the tab       Positive numeric value    no
+                  key to move focus) within the page
+Disabled          Disables or enables the button                       yes, no                   yes
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
+
 Example: this code in the button **click** system event makes the form validation.
 ::
 	dataWidget.validate();
@@ -79,6 +107,32 @@ This component is used to type the text information within the form.
 
 .. image:: images/text_field.png
 
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Label             Plain text or html to display as a component label   Plain text or html        yes
+Label Align       Label alignment relative to the input field          left, top, right          no
+Tooltip           Component tooltip                                    Any string                yes
+Tooltip delay     Delay in milliseconds to show the tooltip            Numeric                   no
+Tooltip position  Position of the tooltip relative to the input field  top, right, bottom, left  no
+Required          Makes the input field required                       yes, no                   no
+Read only         Makes the input field read only                      yes, no                   no
+Password          Hides the user input                                 yes, no                   no
+Mask              Regular expression mask to filter the user input     Regular expression        no
+Tab Index         Controls the order of tabing (pressing the tab       Positive numeric value    no
+                  key to move focus) within the page
+Visible           Component visibility                                 yes, no                   yes
+Empty Text        The default text to place into an empty field        Any string                yes
+Max length        Maximum input field length allowed                   Numeric                   no
+Text Align        Text alignment within input field                    left, right               no
+Label Visible     Makes the component label visible or not             yes, no                   no
+Text Transform    Automatically transforms the input field text into   uppercase, lowercase      no
+                  upper or lower case
+================  ===================================================  ========================  ==========
+
 .. _datefield:
 
 DateField
@@ -88,14 +142,54 @@ This component is used to choose the dates within the form.
 
 .. image:: images/date_field.png
 
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Label             Plain text or html to display as a component label   Plain text or html        yes
+Label Align       Label alignment relative to the input field          left, top, right          no
+Read only         Makes the input field read only                      yes, no                   no
+Tab Index         Controls the order of tabing (pressing the tab       Positive numeric value    no
+                  key to move focus) within the page
+Visible           Component visibility                                 yes, no                   yes
+Empty Text        The default text to place into an empty field        Any string                yes
+Text Align        Text alignment within input field                    left, right               no
+Label Visible     Makes the component label visible or not             yes, no                   no
+================  ===================================================  ========================  ==========
+
 .. _numberfield:
 
 NumberField
 -----------
 
-This component is used to type the numeric values within the form. By default, it has an up/down spinner buttons letting to increment and decrement the value of the field. The **step** attribute is used to define the incrementing/decrementing value.
+This component is used to type the numeric values within the form. By default, it has an up/down spinner buttons letting to increment and decrement the value of the field.
 
 .. image:: images/numberfield.png
+
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Label             Plain text or html to display as a component label   Plain text or html        yes
+Label Align       Label alignment relative to the input field          left, top, right          no
+Value             Initial value                                        Numeric                   yes
+Step              Defines the incrementing/decrementing step value     Numeric                   no
+Read only         Makes the input field read only                      yes, no                   no
+Tab Index         Controls the order of tabing (pressing the tab       Positive numeric value    no
+                  key to move focus) within the page
+Visible           Component visibility                                 yes, no                   yes
+Empty Text        The default text to place into an empty field        Any string                yes
+Step              Defines the incrementing/decrementing step value     Numeric                   no
+Max length        Maximum input field length allowed                   Numeric                   no
+Text Align        Text alignment within input field                    left, right               no
+Label Visible     Makes the component label visible or not             yes, no                   no
+Max Value         Maximum possible value                               Numeric                   yes
+Min Value         Minimum possible value                               Numeric                   yes
+================  ===================================================  ========================  ==========
 
 .. _combobox:
 
@@ -108,6 +202,30 @@ This is the drop down list letting the user to choose one value from the list.
 
 The combobox component is usually used with the DataQuery that can be configured in the **values** attribute.
 
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Label             Plain text or html to display as a component label   Plain text or html        yes
+Label Align       Label alignment relative to the input field          left, top, right          no
+Values            Component values. Clicking on this attribute opens   Numeric                   no
+                  a screen to connect the component to the DataQuery
+Read only         Makes the component input field read only            yes, no                   no
+Editable          Makes the component input field editable or  not     yes, no                   no
+Tab Index         Controls the order of tabing (pressing the tab       Positive numeric value    no
+                  key to move focus) within the page
+Visible           Component visibility                                 yes, no                   yes
+Empty Text        The default text to place into an empty field        Any string                yes
+Step              Defines the incrementing/decrementing step value     Numeric                   no
+Max length        Maximum input field length allowed                   Numeric                   no
+Text Align        Text alignment within input field                    left, right               no
+Label Visible     Makes the component label visible or not             yes, no                   no
+Text Transform    Automatically transforms the input field text into   uppercase, lowercase      no
+                  upper or lower case
+================  ===================================================  ========================  ==========
+
 .. _checkbox:
 
 CheckBox
@@ -116,6 +234,25 @@ CheckBox
 Classical checkbox component, used to choose between values like yes/no, true/false etc.
 
 .. image:: images/checkbox.png
+
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Label             Plain text or html to display as a component label   Plain text or html        yes
+Label Position    Label position relative to the checkbox              before, after             no
+Read only         Makes the component read only                        yes, no                   no
+Disabled          Disables or enables the component                    yes, no                   no
+Default State     Default state of the checkbox                        checked, unchecked        no
+Checked Value     Used to pass the value when the checkbox is checked  Any string                no
+Unchecked Value   Used to pass the value when the checkbox is          Any string                no
+                  unchecked
+Tab Index         Controls the order of tabing (pressing the tab       Positive numeric value    no
+                  key to move focus) within the page
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
 
 Two arguments make the checkbox different from other components:
 
@@ -153,7 +290,25 @@ This component is used to type the large text information within the form.
 
 .. image:: images/text_area.png
 
-**Note:** using the **Text Transform** attribute, the component can automatically transform the typed text to upper or low cases.
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Label             Plain text or html to display as a component label   Plain text or html        yes
+Label Align       Label alignment relative to the input field          left, top, right          no
+Read only         Makes the input field read only                      yes, no                   no
+Tab Index         Controls the order of tabing (pressing the tab       Positive numeric value    no
+                  key to move focus) within the page
+Visible           Component visibility                                 yes, no                   yes
+Empty Text        The default text to place into an empty field        Any string                yes
+Max length        Maximum input field length allowed                   Numeric                   no
+Text Align        Text alignment within input field                    left, right               no
+Label Visible     Makes the component label visible or not             yes, no                   no
+Text Transform    Automatically transforms the input field text into   uppercase, lowercase      no
+                  upper or lower case
+================  ===================================================  ========================  ==========
 
 .. _generalBasicGcApi:
 
@@ -202,7 +357,7 @@ This is the container usually used to contain the form fields elements.
 .. _panel:
 
 Panel
---------
+-----
 
 This is the simplest container used to group any graphical components including other panels.
 
@@ -211,14 +366,14 @@ This is the simplest container used to group any graphical components including 
 .. _vertpanel:
 
 Vertical Panel
---------
+--------------
 
 This is the same as a simple panel but using the vertical layout.
 
 .. _tabpanel:
 
 Tab Panel
---------
+---------
 
 This is the classical tab panel used to group the information in the different tabs:
 
@@ -227,7 +382,7 @@ This is the classical tab panel used to group the information in the different t
 .. _panelsplitter:
 
 PanelSplitter
---------
+-------------
 
 This is the container used to split several panels horizontally or vertically.
 
