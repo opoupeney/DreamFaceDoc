@@ -23,6 +23,11 @@ Basic Graphical Controls
 * :ref:`ComboBox <combobox>`
 * :ref:`CheckBox <checkbox>`
 * :ref:`TextArea <textarea>`
+* :ref:`Header <header>`
+* :ref:`Image <imageComp>`
+* :ref:`HTMLContent <htmlContent>`
+* :ref:`HelpButton <helpButton>`
+* :ref:`FlashObject <flashObject>`
 * :ref:`General API <generalBasicGcApi>`
 
 .. _statictext:
@@ -65,7 +70,7 @@ This component has its own API methods that are different from other components 
    :returns: the current attribute value associated with the component.
 
 Example: this code changes the current text style for *italic* and grey. *element* is a current component instance passed as an agrument to the system events.
-::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	element.css("font-style", "italic");
 	element.css("color", "#B0C4DE");
 
@@ -95,7 +100,7 @@ Visible           Component visibility                                 yes, no  
 ================  ===================================================  ========================  ==========
 
 Example: this code in the button **click** system event makes the form validation.
-::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	dataWidget.validate();
 
 .. _textfield:
@@ -272,12 +277,12 @@ How to use **element.setValue()** method with checkbox:
    * Any value passed by **element.setValue()** method will uncheck the component state except *true* and the current value of the **Checked Value** attribute.
 
 Example: to check the component state (*MY_CHECKBOX* is the checkbox name).
-::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	var my_checkbox = dataWidget.getElementByName('MY_CHECKBOX');
 	my_checkbox.setValue(true);
 
 Example: to uncheck the component state (*MY_CHECKBOX* is the checkbox name).
-::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	var my_checkbox = dataWidget.getElementByName('MY_CHECKBOX');
 	my_checkbox.setValue(false);
 
@@ -310,6 +315,92 @@ Text Transform    Automatically transforms the input field text into   uppercase
                   upper or lower case
 ================  ===================================================  ========================  ==========
 
+.. _header:
+
+Header
+------
+Component used to define a *header* image.
+
+Attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Logo              URL of the image used as a logo                      String                    yes
+Color             Header background color                              Color name from combobox  yes
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
+
+.. _imageComp:
+
+Image
+-----
+Component used to define an image.
+
+Attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+URL               URL of the image used as a logo                      String                    yes
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
+
+.. _htmlContent:
+
+HTMLContent
+-----------
+Component used to show the HTML content.
+
+Attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Content           HTML text content. Click on this attribute in        String                    no
+                  the Attributes panel opens an HTML editor window
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
+
+.. _helpButton:
+
+HelpButton
+----------
+This component adds a help button on the page. Click on this button opens a popup window with a predefined help message.
+
+Attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Content           Content of the opened help window. Can use HTML or   String                    no
+                  plain text
+Icon              URL of the image used for the help button            String                    no
+
+Dialog Title      Title of the opened help window                      String                    no
+Dialog Width      Width of the opened help window                      Positive number           no
+Dialog Height     Height of the opened help window                     Positive number           no
+================  ===================================================  ========================  ==========
+
+.. _flashObject:
+
+FlashObject
+-----------
+Component used to show the flash content.
+
+Attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Source            Address of the flash object                          String                    yes
+================  ===================================================  ========================  ==========
+
 .. _generalBasicGcApi:
 
 General API
@@ -327,7 +418,7 @@ There are several methods common for all basic graphical components:
    :returns: the current value associated with the component.
 
 Example: this code changes the Text component value if Checkbox component was checked.
-::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
    var myCheckbox = dataWidget.getElementByName('MY_CHECKBOX');
    var myText = dataWidget.getElementByName('MY_TEXT');
 
