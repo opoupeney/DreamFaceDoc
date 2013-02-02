@@ -12,6 +12,7 @@ features required when developing an Enterprise Cloud application:
 * :ref:`Form Validation <formvalidation>`
 * :ref:`Form Validation Rules <validRules>`
 * :ref:`Using Expressions <expressions>`
+* :ref:`Using Soft Events and Application Context <softEvents>`
 
 .. _startstudio:
 
@@ -108,8 +109,66 @@ As a result, if the user clicks on the *Submit* button when *Name* field is empt
 Using Expressions
 ----------------
 
-Expressions are very very powerfull part of the DreamFace platform. Using expressions lets the components to change its behavior in runtime depending on many other conditions. To use expressions, select the graphical component and click on the expressions icon near the component attribute that must change its behavior in runtime. It opens an Expression Builder in the popup window. Select the global element in the bottom left area and its property in the bottom right area - it will paste an appropriate expression to the javascript editor.
+Expressions are very very powerfull part of the DreamFace platform. Using expressions lets the components to change its behavior in runtime depending on other components or conditions.
+
+To use expressions, select the graphical component and click on the expressions icon near the component attribute that must change its behavior in runtime. It opens an Expression Builder in the popup window. Select the global element in the bottom left area and its property in the bottom right area - it will paste an appropriate expression to the javascript editor.
+
+Example: make email input field visible only if the checkbox is checked
+
+.. image:: images/expression_form.png
+
+Expression Builder window opened after clicking on the *Expression* icon of the **visible** attribute of the *Email* component:
+
+.. image:: images/expression_builder.png
+
+Code that must be put in the Expression Builder:
+::
+	if ("{elements.MY_CHECHBOX.value}" == "on")
+	   return "yes";
+	else 
+	   return "no";
 
 Example: this code, placed in the expressions of the *Disabled* attribute of the Submit button, enables the button only if the widget validation status is *validated*:
 ::
 	return (("{widget.Properties.validationStatus}"=="validated")? "no" : "yes");
+
+.. _softEvents:
+
+Using Soft Events and Application Context
+----------------
+Soft Events are used to make a loosely coupled communication between the widgets. To decalre a soft event, go to the *Settings* item of the global menu, click *General -> Events* on the left and click a button to add a new event.
+
+Example: two widgets communicating with each other. Changing the value of the combobox *Type* refreshes the data in the grid.
+
+.. image:: images/soft_event_result.png
+
+First, decalare new soft event:
+
+.. image:: images/soft_event_declaration.png
+
+Second, publish a soft event in the **change** system event of the combobox in the first widget (use *Paste Event* button at the top of the JavaScript Editor):
+::
+	dataWidget.publishEvent( "FreshMoneyType", [params.newValue])
+
+Parameters are: soft event name and new combobox value.
+
+Third, in the *Widget Application Events* (widget - not grid) panel of the widget containing the grid, subscribe on the soft event and put there the code:
+::
+	var grid = dataWidget.getElementByName("money_grid");
+	dfSetContextValue("money", "type", type, 
+        	          function(){
+                	      grid.loadData();   
+                  	});
+
+This code puts in the application context an object *money* with a property *type* and a value that is passed to the event during publishing (*type* is an agrument passed to the event decalred earlier - now it contains a new combobox value). *money_grid* is a grid component name. Callback function contains a code to load data in the grid.
+
+Fouth, put the code in the **init** system event of the grid to define an initial value:
+::
+	var grid = dataWidget.getElementByName("money_grid");
+	dfSetContextValue("money", "type", "", 
+        	          function(){
+                	  });
+
+Last, redefine the DataQuery parameter (used by the grid) to use the context value:
+
+.. image:: images/soft_event_query_params.png
