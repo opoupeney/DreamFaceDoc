@@ -445,6 +445,23 @@ This is the container usually used to contain the form fields elements.
 
 .. image:: images/valid_form.png
 
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Spacing           Spacing between the border and the content           Numeric                   no
+Data Path         Defines a path for the DataQuery associated with     relative, absolute        no
+                  the container
+Binding                                                                                          no
+Title             Component title                                      String                    yes
+Collapsible       If the container can be collapsed using a button     yes, no                   no
+                  near the title or not
+Collapsed         If the container is collapsed initially or not       yes, no                   no
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
+
 .. _panel:
 
 Panel
@@ -454,12 +471,46 @@ This is the simplest container used to group any graphical components including 
 
 .. image:: images/panel.png
 
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Spacing           Spacing between the border and the content           Numeric                   no
+Data Path         Defines a path for the DataQuery associated with     relative, absolute        no
+                  the container
+Binding                                                                                          no
+Title             Component title                                      String                    yes
+Title Visible     Component title visibility                           yes, no                   no
+Border Visible    Component border visibility                          yes, no                   no
+Visible           Component visibility                                 yes, no                   yes
+Body Width        Width of the body, usually in percentage             String, e.g. 100%         no
+Body Height       Height of the body, usually in percentage            String, e.g. 100%         no
+================  ===================================================  ========================  ==========
+
 .. _vertpanel:
 
 Vertical Panel
 --------------
 
 This is the same as a simple panel but using the vertical layout.
+
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Spacing           Spacing between the border and the content           Numeric                   no
+Data Path         Defines a path for the DataQuery associated with     relative, absolute        no
+                  the container
+Binding                                                                                          no
+Title             Component title                                      String                    yes
+Title Visible     Component title visibility                           yes, no                   no
+Border Visible    Component border visibility                          yes, no                   no
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
 
 .. _tabpanel:
 
@@ -470,20 +521,66 @@ This is the classical tab panel used to group the information in the different t
 
 .. image:: images/tabpanel.png
 
+Component attributes:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Component name                                       Any string                no
+Title             Component title                                      String                    yes
+Title Visible     Component title visibility                           yes, no                   no
+Tab Position      Position of the TabBar                               top, bottom               no
+Plain             Show or not the background of the TabBar             yes, no                   no
+Min Tab Width     Minimal tab width                                    String, for example,      no
+                                                                       100px or 100
+Max Tab Width     Maximum tab width                                    String, for example,      no
+                                                                       100px or 100
+Tabs Navigation   If the tabs will be included in the page navigation  yes, no                   no
+                  when user clicks "Tab" button to move the focus on
+                  the next component
+Tabs              Defines the set of tabs, their title, icon, if they  Set of tabs               no
+                  are hidden or disabled
+Visible           Component visibility                                 yes, no                   yes
+================  ===================================================  ========================  ==========
+
 .. _panelsplitter:
 
 PanelSplitter
 -------------
 
-This is the container used to split several panels horizontally or vertically.
+This is the container used to split two panels horizontally or vertically. 
 
-Example: horizontal layout, one panel with a title, another one iwhtout title.
+**Note:** one of the panel (the left one if the layout is horizontal or the top one if the layout is vertical) is always collapsible and another one is not.
+
+Example: horizontal layout, one panel with a title, another one whtout any title.
 
 .. image:: images/horizontal_splitter.png
 
 Example: vertical layout.
 
 .. image:: images/vertical_splitter.png
+
+Component attributes:
+
+=============================  ===================================================  ========================  ==========
+Name                           Description                                          Possible Values           Expression
+=============================  ===================================================  ========================  ==========
+Name                           Component name                                       Any string                no
+Spacing                        Spacing between the border and the content           Numeric                   no
+Data Path                      Defines a path for the DataQuery associated with     relative, absolute        no
+                               the container
+Binding                                                                                                       no
+Title                          Component title                                      String                    yes
+Title Visible                  Component title visibility                           yes, no                   no
+Title Collapsible              Title of the collapsible sub-panel                   String                    yes
+Title Collapsible Visible      Collapsible panel title visibility                   yes, no                   no
+Panel Collapsible Size         Size of the collapsible panel                        String, for example,      no
+                                                                                    100px or 100
+Title Not Collapsible          Title of the collapsible sub-panel                   String                    yes
+Title Not Collapsible Visible  Collapsible panel title visibility                   yes, no                   no
+Layout                         Panel layout: can be horizontal or vertical          horizontal, vertical      no
+Visible                        Component visibility                                 yes, no                   yes
+=============================  ===================================================  ========================  ==========
 
 .. _customComps:
 
