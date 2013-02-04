@@ -19,21 +19,83 @@ features required when developing an Enterprise Cloud application:
 Start DreamFace Studio
 ----------------------
 
-TBD.
+To start DreamFace studio, open your Internet Browser and go to our cloud server:
+http://206.80.56.38:8080/DreamFace/http_login/tn/dreamface/DreamFaceStudio.
+
+Note, that an IP address and a port number can be changed at a time.
+
+.. image:: images/df_studio_start.png
+
+Type your *User ID* and *Password* and click the *Sign in* button.
 
 .. _createapplication:
 
 Create an Application
 ----------------------
 
-TBD.
+A DreamFace application represents a simple or complex sequence of screens. To create an application, go to the *Home* menu: at the left of the screen, you'll see the list of existing applications and *Create* button at the end of this list. Click on this button and *Create a new applicaiton* screen will be displayed:
+
+.. image:: images/app_create.png
+
+Application properties:
+
+=============================  =============================================================  ========================
+Name                           Description                                                    Possible Values         
+=============================  =============================================================  ========================
+Name                           Application name                                               String              
+Title                          Application title                                              String
+Template                       Application template name. Initially you have 3 templates:     String from drop-down list
+                               for simple application, for web site and for demo application
+=============================  =============================================================  ========================
+
+After clicking *Save* button at the top right of the *Create a new application* area, new application is created with default values, for example, there will already be a *Home* screen (highlighted in **bold**):
+
+.. image:: images/app_after_creation.png
+
+That's it, you already have your first application! Now, it's time to :ref:`create a Widget. <createdw>`
 
 .. _createdw:
 
 Create a DataWidget
 -------------------
 
-TBD.
+To create a widget, go to the *Home* screen and click *Widgets* button at the top right of the screen - in the main menu:
+
+.. image:: images/widget_create.png
+
+It opens a screen where you can search for a particular widget or look at all widgets at once (leave the input field field empty and click the *Search* button for that).
+
+To open a widget creation screen, click on the *create a widget* button like on the picture:
+
+.. image:: images/widget_create_btn.png
+
+It opens a screen where you can fill the widget properties:
+
+.. image:: images/widget_props.png
+
+=============================  =============================================================  ========================
+Name                           Description                                                    Possible Values         
+=============================  =============================================================  ========================
+Name                           Widget name                                                    String              
+Description                    Widget description                                             String
+Type                           There are four widget types now: JavaScriptToolkit,            String from drop-down list
+                               JavaScript, WidgetBuilder and HorizontalMenu
+Category                       Widget category                                                String from drop-down list
+Associated Data Query          The DataQuery, associated with the widget                      String, Data Query name
+Load data on display           Defines if the Data Query will be executed as far as the       yes, no
+                               widget will be displayed
+Public widget                  Defines if this widget is public                               yes, no
+=============================  =============================================================  ========================
+
+To save the widget, click the *save the widget* button at the top of the *Create a new widget* area.
+
+The *WidgetBuilder* is the default type and means that the widget can be constructed using the WidgetBuilder. If you create this type of widget, you can directly open a Widget Builder clicking the *Open Widget* button at the bottom of the *Create a new widget* area.
+
+To add a widget to the screen, you should open the screen (select your application on the Studio Home page, click *User Interface* and *Screens*) and click the *Open/Close the Widget catalog* button.
+
+.. image:: images/widget_add_to_screen.png
+
+It will open the widget catalog where you can drag your widget and drop it to the selected screen area - you can see the screen areas on the right of the widget catalog.
 
 .. _formvalidation:
 
