@@ -121,6 +121,8 @@ Expression Builder window opened after clicking on the *Expression* icon of the 
 
 .. image:: images/expression_builder.png
 
+MY_CHECHBOX - Checkbox component name, EMAIL - TextField component name.
+
 Code that must be put in the Expression Builder:
 ::
 	if ("{elements.MY_CHECHBOX.value}" == "on")
