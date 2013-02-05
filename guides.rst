@@ -20,9 +20,9 @@ Start DreamFace Studio
 ----------------------
 
 To start DreamFace studio, open your Internet Browser and go to our cloud server:
-http://206.80.56.38:8080/DreamFace/http_login/tn/dreamface/DreamFaceStudio.
+http://[**server**]/DreamFace/http_login/tn/[**tenant**]/DreamFaceStudio.
 
-Note, that an IP address and a port number can be changed at a time.
+Replace server and tenant with the appropriate values given by your cloud administrator.
 
 .. image:: images/df_studio_start.png
 
