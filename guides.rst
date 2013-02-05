@@ -19,14 +19,18 @@ features required when developing an Enterprise Cloud application:
 Start DreamFace Studio
 ----------------------
 
-To start DreamFace studio, open your Internet Browser and go to our cloud server:
-http://[**server**]/DreamFace/http_login/tn/[**tenant**]/DreamFaceStudio.
+To start DreamFace studio, open your Internet Browser and go to your cloud server:
+http: // [**server**]/DreamFace/http_login/tn/[**tenant**]/DreamFaceStudio.
 
-Replace server and tenant with the appropriate values given by your cloud administrator.
+Replace [**server**] and [**tenant**] with the appropriate values given by your cloud administrator.
 
 .. image:: images/df_studio_start.png
 
 Type your *User ID* and *Password* and click the *Sign in* button.
+
+Default **User ID**: **John**
+
+Default **Password**: **admin**
 
 .. _createapplication:
 
