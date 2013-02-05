@@ -37,7 +37,7 @@ Default **Password**: **admin**
 Create an Application
 ----------------------
 
-A DreamFace application represents a simple or complex sequence of screens. To create an application, go to the *Home* menu: at the left of the screen, you'll see the list of existing applications and *Create* button at the end of this list. Click on this button and *Create a new applicaiton* screen will be displayed:
+A DreamFace application represents a simple or complex sequence of screens. To create an application, go to the *Home* menu: at the left of the screen, you'll see the list of existing applications and *Create* button at the end of this list. Click on this button and *Create a new application* form will be displayed:
 
 .. image:: images/app_create.png
 
@@ -48,8 +48,8 @@ Name                           Description                                      
 =============================  =============================================================  ========================
 Name                           Application name                                               String              
 Title                          Application title                                              String
-Template                       Application template name. Initially you have 3 templates:     String from drop-down list
-                               for simple application, for web site and for demo application
+Template                       Application template name. Initially you have one template:    String from drop-down list
+                               SimpleApplication
 =============================  =============================================================  ========================
 
 After clicking *Save* button at the top right of the *Create a new application* area, new application is created with default values, for example, there will already be a *Home* screen (highlighted in **bold**):
@@ -80,15 +80,15 @@ It opens a screen where you can fill the widget properties:
 =============================  =============================================================  ========================
 Name                           Description                                                    Possible Values         
 =============================  =============================================================  ========================
-Name                           Widget name                                                    String              
+Name                           Widget name. Blanks and special characters are not allowed     String              
 Description                    Widget description                                             String
-Type                           There are four widget types now: JavaScriptToolkit,            String from drop-down list
-                               JavaScript, WidgetBuilder and HorizontalMenu
+Type                           There are four widget types now: WidgetBuilder and             String from drop-down list
+                               JavaScriptToolkit
 Category                       Widget category                                                String from drop-down list
 Associated Data Query          The DataQuery, associated with the widget                      String, Data Query name
-Load data on display           Defines if the Data Query will be executed as far as the       yes, no
-                               widget will be displayed
-Public widget                  Defines if this widget is public                               yes, no
+Load data on display           Defines if the Data Query will be executed at the same time    yes, no
+                               as the widget will be displayed
+Public widget                  Defines if this widget is public (future release)              yes, no
 =============================  =============================================================  ========================
 
 To save the widget, click the *save the widget* button at the top of the *Create a new widget* area.
