@@ -12,7 +12,7 @@ Charts are the components used to display the graphical information. There are t
 PieChart
 --------
 
-This component is used to display a graphical information in the form of pie chart.
+This component is used to display a data in the graphical form using the pie chart.
 
 Example: piechart with legeng
 
@@ -67,7 +67,7 @@ Tips Renderer     Function defining how (and what) to display in the   JavaScrip
                   tooltip of the current serie
 ================  ===================================================  ========================  ==========
 
-Piechart Events
+PieChart Events
 ^^^^^^^^^^^
 
 Piechart component has two dedicated system events: **itemclick** and **dataLoaded**. Both have three arguments *(dataWidget, params, element)*. The *dataWidget* and *element* are the same for both events, but *params* is different.
@@ -139,8 +139,114 @@ And, finally, the DataQuery, used by the grid, must use the object from the cont
 
 MixedChart
 --------
-********************************
-TODO: 
+This component can display a data in the graphical form using four different chart types:
 
-* 4 types (?) of mixed charts
-* mixed chart + tooltip example
+* Area chart.
+* Bar chart.
+* Line chart.
+* Scatter chart.
+
+**Note:** the type of the chart is defined by the *Type* property in the chart *Series* attribute in the *Series definition* section.
+
+.. image:: images/mixedchart_types.png
+
+Component Attributes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+General attributes:
+
+========================  ===================================================  ========================  ==========
+Name                      Description                                          Possible Values           Expression
+========================  ===================================================  ========================  ==========
+Name                      Component name                                       Any string                no
+Title Horizontal          Horizontal title of the chart                        Any string                yes
+Title Vertical            Vertical title of the chart                          Any string                yes
+Title Horizontal Visible  Visibility of the horizontal title of the chart      yes, no                   no
+Title Vertical Visible    Visibility of the vertical title of the chart        yes, no                   no
+Axis Horizontal Visible   Visibility of the horizontal axis of the chart       yes, no                   no
+Axis Vertical Visible     Visibility of the vertical axis of the chart         yes, no                   no
+Tooltip delay             Delay in milliseconds to show the tooltip            Numeric                   no
+Tooltip position          Position of the tooltip relative to the chart        top, right, bottom, left  no
+Series                    Chart series definition. Opens a window to define    Series definition array   no
+                          series
+Visible                   Component visibility                                 yes, no                   yes
+========================  ===================================================  ========================  ==========
+
+**Series** attribute parameters:
+
+=================  ===================================================  ========================  ==========
+Name               Description                                          Possible Values           Expression
+=================  ===================================================  ========================  ==========
+Query              DataQuery used to retrieve data for the component    DataQuery name            no
+Data path          Path in the DataQuery structure definition to get    Data path string array    no
+                   the data
+Load on Display    Defines if the component tries to load the data      yes, no                   no
+                   immediately after displaying on the page
+Group              Defines the chart type for the group of series       Area, Bar, Stacked Bar    no
+Series definition  Chart series definition                              Series definition array   no
+=================  ===================================================  ========================  ==========
+
+**Series definition** parameters:
+
+================  ===================================================  ========================  ==========
+Name              Description                                          Possible Values           Expression
+================  ===================================================  ========================  ==========
+Name              Serie name                                           Any string                no
+Data path         Path in the DataQuery structure definition to get    Data path string array    no
+                  the data to display by this serie
+Type              Defines the chart type for the current serie         Scatter, Column, Line,    no
+                                                                       Area
+Display           DataQuery path element which values will be          DataQuery path element    no
+                  used to display as text, e.g. in legends
+Value             DataQuery path element which values will be used to  DataQuery path element    no
+                  display in the graphical form
+Show in Legend    Defines if the legends will be displayed             yes, no                   no
+Renderer          Function defining how (and what) to display the      JavaScript function code  no
+                  current serie
+Tips Renderer     Function defining how (and what) to display in the   JavaScript function code  no
+                  tooltip of the current serie
+================  ===================================================  ========================  ==========
+
+MixedChart Events
+^^^^^^^^^^^
+
+MixedChart component has three dedicated system events: **itemclick**, **itemdblclick** and **dataLoaded**. Both have three arguments *(dataWidget, params, element)*. The *dataWidget* and *element* are the same for both events, but *params* is different.
+
+.. js:function:: itemclick(dataWidget, params, element)
+	
+   Triggered when developer clicks on the component.
+
+   :param object dataWidget: The datawidget instance.
+
+   :param object params: Parameters. The object has an important property: **chart** (*object*) - the chart instance. This property has many subproperties but the most useful is **storeItem.data** which contains the selected (clicked) data point value. To access the data, use a syntax like **chart.storeItem.data.dataQueryPathElement** where **dataQueryPathElement** is the name of the last DataQuery path element defined in the serie Data Path.
+
+   :param object element: DFExtComponent instance.
+
+.. js:function:: itemdblclick(dataWidget, params, element)
+	
+   Triggered when developer double clicks on the component.
+
+   :param object dataWidget: The datawidget instance.
+
+   :param object params: Parameters. The object has an important property: **chart** (*object*) - the chart instance. This property has many subproperties but the most useful is **storeItem.data** which contains the selected (clicked) data point value. To access the data, use a syntax like **chart.storeItem.data.dataQueryPathElement** where **dataQueryPathElement** is the name of the last DataQuery path element defined in the serie Data Path.
+
+   :param object element: DFExtComponent instance.
+
+.. js:function:: dataLoaded(dataWidget, params, element)
+	
+   Triggered when the data is loaded.
+
+   :param object dataWidget: The datawidget instance.
+
+   :param object params: Parameters. The object has only one property: **DataSet** object.
+
+   :param object element: DFExtComponent instance.
+
+Example: put this code in the **itemclick** event to get the selected (clicked) data point.
+::
+	console.log("Month: " + params.chart.storeItem.data.monthnumber +
+            	", value: " + params.chart.storeItem.data.value);
+
+This is the serie definition for this example - pay attention on the *Display* and *Value* properties:
+
+.. image:: images/mixedchart_serie.png
